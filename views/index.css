@@ -1,0 +1,194 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    box-sizing: border-box;
+    font-family: Montserrat
+}
+
+body {
+    background-color: #000000;
+    background: linear-gradient(140deg, #000000, #484949);
+    background-size: 400% 400%;
+
+    -webkit-animation: background 18s ease infinite;
+    -moz-animation: background 18s ease infinite;
+    animation: background 18s ease infinite;
+ height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@-webkit-keyframes background {
+    0%{background-position:5% 0%}
+    50%{background-position:96% 100%}
+    100%{background-position:5% 0%}
+}
+@-moz-keyframes background {
+    0%{background-position:5% 0%}
+    50%{background-position:96% 100%}
+    100%{background-position:5% 0%}
+}
+@keyframes background {
+    0%{background-position:5% 0%}
+    50%{background-position:96% 100%}
+    100%{background-position:5% 0%}
+}
+
+#btn {
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+
+    border-radius: 15px;
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    border: none;
+    transition: transform .3s;
+}
+#btn:hover {
+    transform: scale(1.05);
+}
+#info { 
+color: #000000;
+text-decoration: none;
+
+  
+}
+
+.footercontainer {
+    display: flex;
+    align-items: center;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem;
+}
+
+@media (max-width: 700px) {
+    .footercontainer {
+        flex-direction: column;
+    }
+}
+
+.footercontent {
+    width: 100%;
+}
+
+.footercopyright {
+    color: rgba(0, 0, 0, 0.2);
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.footeraffiliation {
+    color: rgba(0, 0, 0, 0.2);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.footericons {
+    display: flex;
+    align-items: center;
+
+    margin-left: auto;
+}
+
+@media (max-width: 700px) {
+    .footericons {
+        width: 100%;
+        align-items: flex-start;
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+}
+
+.footericon {
+    color: rgba(0, 0, 0, 0.2);
+    font-size: 1.25rem;
+    text-decoration: none !important;
+    transition: color 0.25s ease;
+}
+
+.footericon:not(:first-child) {
+    margin-left: 1rem;
+}
+
+.footercontainer img {
+    height: 36px;
+    width: 36px;
+    cursor: pointer;
+    margin: 0 0 8px 15px;
+    transition: all .15s ease-in-out
+}
+
+.footericon:hover {
+    transform: scale(1.2)
+}
+.container {
+    background: #fff;
+    width: 400px;
+    height: 380px;
+    padding: 50px;
+    border-radius: 50px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .9)
+}
+
+.container .password {
+    width: 100%;
+    height: 45px;
+    padding: 0 50px 0 20px;
+    border-radius: 5px;
+    font-size: large;
+    background: #f5f5f5;
+    border-radius: 30px;
+    border: 1px solid rgb(255, 255, 255);
+    transition: .4s
+}
+
+.container .password:focus {
+    box-shadow: 0 0 30px rgb(0, 0, 0)
+}
+
+.container p {
+    margin: 10px 10px 30px;
+    opacity: .5;
+    transition: .3s
+}
+
+.container p span {
+    font-size: 22px;
+    color: rgb(0, 0, 0);
+    margin-left: 45px
+}
+
+.fa-check {
+    opacity: 0
+}
+
+.fa-times {
+    opacity: 1
+}
+
+.container p i {
+    position: absolute;
+    text-align: center;
+    width: 32px;
+    height: 32px;
+    line-height: 30px;
+    font-size: larger;
+    border-radius: 50%;
+    color: rgba(0, 0, 0, 0);
+    border: 2px solid rgb(26, 43, 68)
+}
+
+.container #voir {
+    color: rgb(0, 0, 0);
+    font-size: 22px;
+    transform: translateX(260px) translateY(-34px);
+    cursor: pointer
+}
