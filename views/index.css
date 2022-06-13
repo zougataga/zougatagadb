@@ -112,6 +112,7 @@ text-decoration: none;
     font-size: 1.25rem;
     text-decoration: none !important;
     transition: color 0.25s ease;
+    transition: all .15s ease-in-out
 }
 
 .footericon:not(:first-child) {
@@ -135,7 +136,8 @@ text-decoration: none;
     height: 380px;
     padding: 50px;
     border-radius: 50px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, .9)
+    box-shadow: 0 0 20px rgba(0, 0, 0, .9);
+    transition: all .15s ease-in-out
 }
 
 .container .password {
