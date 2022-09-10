@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Engine Free</title>
+    <link rel="shortcut icon" href="https://media.discordapp.net/attachments/993165982174560326/994666667034554368/MOSHED-2022-6-20-12-39-5_2.gif" type="image/x-icon">
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Raleway:400,700,900&#39;");
+
+        /* Base styling */
+        body {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            background-color: black;
+        }
+
+
+        .bg {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            right: -50%;
+            bottom: -50%;
+            width: 200%;
+            height: 200vh;
+            background: transparent url('http://assets.iceable.com/img/noise-transparent.png') repeat 0 0;
+            background-repeat: repeat;
+            animation: bg-animation .2s infinite;
+            opacity: .9;
+            visibility: visible;
+        }
+
+        @keyframes bg-animation {
+            0% {
+                transform: translate(0, 0)
+            }
+
+            10% {
+                transform: translate(-5%, -5%)
+            }
+
+            20% {
+                transform: translate(-10%, 5%)
+            }
+
+            30% {
+                transform: translate(5%, -10%)
+            }
+
+            40% {
+                transform: translate(-5%, 15%)
+            }
+
+            50% {
+                transform: translate(-10%, 5%)
+            }
+
+            60% {
+                transform: translate(15%, 0)
+            }
+
+            70% {
+                transform: translate(0, 10%)
+            }
+
+            80% {
+                transform: translate(-15%, 0)
+            }
+
+            90% {
+                transform: translate(10%, 5%)
+            }
+
+            100% {
+                transform: translate(5%, 0)
+            }
+        }
+
+        body {
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+
+        .progress {
+            background: rgba(255, 255, 255, 0.1);
+            justify-content: flex-start;
+            border-radius: 100px;
+            align-items: center;
+            position: relative;
+            padding: 0 5px;
+            display: flex;
+            height: 40px;
+            width: 500px;
+        }
+
+        .progress-value {
+            animation: load 3s normal forwards;
+            box-shadow: 0 10px 40px -10px #1537f7;
+            border-radius: 100px;
+            background: #fff;
+            height: 30px;
+            width: 0;
+        }
+
+        @keyframes load {
+            0% {
+                width: 0;
+            }
+
+            100% {
+                width: 80%;
+            }
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="bg"></div>
+    <div class="progress">
+        <div class="progress-value"></div>
+    </div>
+    <script>
+        function init() {
+            setTimeout(function () {
+                window.location.href = "<%= h %>";
+            }, 2000);
+        }
+        $(document).ready(init);
+    </script>
+</body>
+
+</html>
