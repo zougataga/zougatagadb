@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
+    <title>Javascript Pong</title>
+    <link rel="shortcut icon" href="./resource/img/favicon.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="./resource/css/style.css">
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.js"></script>
+</head>
+
+<body>
+    <div class="retour">
+        <span>↩️</span>
+    </div>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>
+            <h1><span class="icon">⚙️</span>Paramètre</h1>
+            <hr>
+            <!-- TOUCHE -->
+            <h2>Touche</h2>
+            <div class="table-wrapper">
+                <table class="fl-table">
+                    <thead>
+                        <tr>
+                            <th>Joueur</th>
+                            <th>Haut</th>
+                            <th>Bas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1 (base / vous)</td>
+                            <td>Fleche du haut</td>
+                            <td>Fleche du bas</td>
+                        </tr>
+                        <tr>
+                            <td>2 (2v2)</td>
+                            <td>z</td>
+                            <td>s</td>
+                        </tr>
+                    <tbody>
+                </table>
+            </div>
+            </p>
+        </div>
+    </div>
+    <div class="toast">
+        <div class="toast-content"><span class="check">✅</span>
+            <div class="message"><span class="text text-1">Success</span><span class="text text-2"></span></div>
+        </div> <span id="closetoastsucces" class="closetoast">x</span>
+        <div class="progress"></div>
+    </div>
+    <div class="toasterror">
+        <div class="toasterror-content"><span class="check">❌</span>
+            <div class="message"><span class="text text-1">Error</span><span class="text text-4"></span></div>
+        </div> <span id="closetoasterror" class="closetoast">x</span>
+        <div class="progress"></div>
+    </div>
+
+    <div class="preload">
+        <div class="circle"></div>
+    </div>
+
+    <div class="page">
+        <div class="mode">
+            <h1>Javascript Pong
+                <a target="_blank" href="https://github.com/zougataga/js-pong">
+                    <svg viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z">
+                        </path>
+                    </svg>
+                </a>
+            </h1>
+            <span>
+                Un jeu <strong>de ping pong</strong> fait en javascript. <a data="#" id="openModal">⚙️</a>
+            </span>
+            <p class="credits">Made with <span class="love">♥</span> by <a href="https://github.com/zougataga"
+                    target="_blank">zougataga</a></p>
+            <canvas width="600" height="480" id="game">Navigateur non compatible avec HTML5 Canvas</canvas>
+            <a id="pc">
+                <span class="icon">💻</span> Ordinateur
+            </a>
+            <a id="v2">
+                <span class="icon">👥</span> 2v2
+            </a>
+            <a id="online">
+                <span class="icon">🌐</span> Online
+            </a>
+        </div>
+        <!-- <div class="footer">
+            <p class="credits">Made with <span class="love">♥</span> by
+        </div> -->
+    </div>
+
+    <script src="./resource/js/body.js"></script>
+</body>
+
+</html>

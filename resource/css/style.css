@@ -1,0 +1,795 @@
+/* BASE */
+:root {
+    --bg: #1D2026;
+    --bg2: #242830;
+
+    --main: #ffd673;
+    --main2: #e0bc63;
+
+    --green: #50fa7b;
+    --green2: #40cf64;
+    --red: #c13a3a;
+    --red2: #962a2a;
+
+}
+
+body {
+    background-color: var(--bg);
+    height: 100vh;
+    font-family: cursive;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+a {
+    color: var(--main);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: var(--main2);
+}
+
+/* SELECTION */
+
+::selection {
+    background: var(--main);
+    color: #000;
+}
+
+/* SCROLL BAR */
+
+::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+}
+
+::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--main);
+    transition: all 0.3s ease;
+    border: 0px none #ffffff;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--main2);
+}
+
+::-webkit-scrollbar-track {
+    background: none;
+    border: 1px none #ffffff;
+}
+
+
+/* LOADING */
+.preload {
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999999;
+    background: var(--bg);
+
+}
+
+.circle {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    margin: -25px 0 0 -25px;
+    border: 4px #aaa solid;
+    border-top: 4px #eee solid;
+    border-radius: 50%;
+    -webkit-animation: spin4 1s infinite linear;
+    animation: spin4 1s infinite linear;
+}
+
+@-webkit-keyframes spin4 {
+    from {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+
+    to {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes spin4 {
+    from {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+
+    to {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+}
+
+/* RETOUR */
+.retour {
+    width: 100%;
+    top: 0;
+    display: none;
+}
+
+.retour span {
+    float: right;
+    cursor: pointer;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 35px;
+    background-color: transparent;
+    border: 2px solid var(--main);
+    font-size: 30px;
+    transition: all 0.3s ease;
+
+    transform: scaleX(0);
+    opacity: 0;
+    animation: fade-in-right ease 0.2s forwards;
+}
+
+.retour span:hover {
+    background: var(--main);
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 99999999999999339;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Modal Content */
+.modal .modal-content {
+    background-color: var(--bg);
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 15px;
+    width: 80%;
+    min-height: 700px;
+    color: #FFF;
+
+    transform: scaleX(0);
+    opacity: 0;
+    animation: fade-in-right ease 0.4s forwards;
+}
+
+@keyframes fade-in-right {
+    from {
+        opacity: 0;
+        transform: translateX(-15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes grow-left {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+.modal-content h2 {
+    text-align: center;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #FFF;
+    padding: 30px 0;
+
+    animation: grow-left ease 0.4s forwards;
+}
+
+
+.modal-content .input-box {
+    animation: grow-left ease 0.4s forwards;
+}
+
+.modal-content .table-wrapper {
+    color: #000;
+    margin: 10px 70px 70px;
+    box-shadow: 0px 35px 50px rgba(0, 0, 0, 0.2);
+    animation: grow-left ease 0.4s forwards;
+}
+
+.modal-content .fl-table {
+    font-size: 12px;
+    font-weight: normal;
+    border: 2px solid var(--bg2);
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: transparent;
+}
+
+.modal-content .fl-table td,
+.modal-content .fl-table th {
+    text-align: center;
+    padding: 8px;
+}
+
+.modal-content .fl-table td {
+    border-right: 1px solid var(--bg2);
+    color: #fff;
+    border-bottom: 1px solid var(--bg2);
+    font-size: 12px;
+}
+
+.modal-content .fl-table thead th {
+    color: #fff;
+    background: var(--bg2);
+}
+
+
+.modal-content .fl-table thead th:nth-child(odd) {
+    color: #fff;
+    background: var(--bg2);
+}
+
+.modal-content .fl-table tr:nth-child(even) {
+    background: transparent;
+}
+
+/* Responsive */
+
+@media (max-width: 767px) {
+    .modal-content .fl-table {
+        display: block;
+        width: 100%;
+    }
+
+    .modal-content .table-wrapper:before {
+        content: "Scroll horizontally >";
+        display: block;
+        text-align: right;
+        font-size: 11px;
+        color: #fff;
+        padding: 0 0 10px;
+    }
+
+    .modal-content .fl-table thead,
+    .modal-content .fl-table tbody,
+    .modal-content .fl-table thead th {
+        display: block;
+    }
+
+    .modal-content .fl-table thead th:last-child {
+        border-bottom: none;
+    }
+
+    .modal-content .fl-table thead {
+        float: left;
+    }
+
+    .modal-content .fl-table tbody {
+        width: auto;
+        position: relative;
+        overflow-x: auto;
+    }
+
+    .modal-content .fl-table td,
+    .modal-content .fl-table th {
+        padding: 20px .625em .625em .625em;
+        height: 60px;
+        vertical-align: middle;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 120px;
+        font-size: 13px;
+        text-overflow: ellipsis;
+    }
+
+    .modal-content .fl-table thead th {
+        text-align: left;
+        border-bottom: 1px solid #f7f7f9;
+    }
+
+    .modal-content .fl-table tbody tr {
+        display: table-cell;
+    }
+
+    .modal-content .fl-table tbody tr:nth-child(odd) {
+        background: none;
+    }
+
+    .modal-content .fl-table tr:nth-child(even) {
+        background: transparent;
+    }
+
+
+
+    .modal-content .fl-table tbody td {
+        display: block;
+        text-align: center;
+    }
+}
+
+
+/* .modal .touche0  {
+    margin-top: 55px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #000;
+    background-color: transparent;
+}
+.modal .touche0 .touche {
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #000;
+} */
+
+/* The Close Button */
+.modal .close {
+    color: #bbb;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.modal .close:hover,
+.modal .close:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* TOAST / NOTIF */
+
+
+.toasterror,
+.toast {
+    z-index: 19999;
+    display: none;
+    transform: translateX(calc(100% + 200px));
+    position: fixed;
+    top: 25px;
+    right: 30px;
+    border-radius: 12px;
+    background: #282a36;
+    padding: 20px 35px 20px 25px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    border-left: 6px solid var(--green);
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+    margin-left: 20px;
+}
+
+.toasterror.active,
+.toast.active {
+    transform: translateX(0%);
+}
+
+.toasterror .toasterror-content,
+.toast .toast-content {
+    display: flex;
+    align-items: center;
+}
+
+.toasterror-content .check,
+.toast-content .check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    width: 35px;
+    border: 2px solid var(--green);
+    color: #fff;
+    font-size: 20px;
+    border-radius: 50%;
+}
+
+.toasterror-content .message,
+.toast-content .message {
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px;
+}
+
+.message .text {
+    font-size: 20px;
+    font-weight: 400;
+    ;
+    color: #aaa;
+}
+
+.message .text.text-1 {
+    font-weight: 600;
+    color: #ccc;
+}
+
+.toasterror .closetoast,
+.toast .closetoast {
+    color: #fff;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    padding: 5px;
+    cursor: pointer;
+
+    opacity: 0.7;
+}
+
+.toasterror .closetoast:hover,
+.toast .closetoast:hover {
+    opacity: 1;
+}
+
+.toasterror .progress,
+.toast .progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background: #282a36;
+}
+
+.toasterror .progress:before,
+.toast .progress:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--green);
+}
+
+.progress.active:before {
+    animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+    100% {
+        right: 100%;
+    }
+}
+
+
+
+.toasterror {
+    border-left: 6px solid var(--red);
+}
+
+.toasterror-content .check {
+    border: 2px solid var(--red);
+}
+
+.toasterror .progress:before {
+    background-color: var(--red);
+}
+
+
+
+/* PAGE */
+/* INDEX */
+.page {
+    display: none;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+
+}
+
+
+@media (min-width: 641px) {
+    /* .page {
+        position: relative
+    } */
+
+    .page::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 700px;
+        background: var(--bg2);
+        background: linear-gradient(80deg, rgba(36, 40, 48, 0.5) 0%, rgba(36, 40, 48, 0) 100%);
+        -webkit-transform-origin: 0;
+        transform-origin: 0;
+        -webkit-transform: skewY(-12deg);
+        transform: skewY(-12deg)
+    }
+
+}
+
+
+
+
+.page .mode {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #fff;
+
+
+    transform: scaleX(0);
+    opacity: 0;
+    animation: fade-in-right ease 0.2s forwards;
+}
+
+.page .mode canvas {
+    display: none;
+    z-index: 999999999999999;
+    border-radius: 5px;
+    background-color: transparent;
+    border: 1px solid #fff;
+
+    transform: scaleX(0);
+    opacity: 0;
+    animation: fade-in-right ease 0.2s forwards;
+
+}
+
+.page .mode h1 {
+    z-index: 999999999999999;
+    margin: 0;
+    display: inline-block;
+
+}
+
+.page .mode h1 a {
+    font-size: 1.8em;
+}
+
+.page .mode h1 a svg {
+    margin: 0 5px;
+    width: 40px;
+    height: 40px;
+    vertical-align: -.125em;
+    fill: #fff;
+    transition: all 0.3s ease;
+}
+
+.page .mode h1 a svg:hover {
+    fill: var(--main);
+}
+
+.page .mode span {
+    color: #bbb;
+    margin: 0;
+}
+
+.page .mode span a {
+    cursor: pointer;
+    color: #fff;
+    /* text-shadow: 0 .125rem 0 rgba(0, 0, 0, .25); */
+    border-radius: 5px;
+
+    padding-top: 1.5px;
+    padding-bottom: 1.5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background: #696161;
+
+    transition: all 0.3s ease;
+    margin: 5px;
+    font-weight: 500;
+}
+
+.page .mode span a:hover {
+    background: #383434;
+}
+
+.page .mode p,
+.page .mode span {
+    z-index: 999999999999999;
+}
+
+.page .mode p.credits {
+    font-size: 1.3em;
+    margin: 15px;
+    color: #fff;
+}
+
+.page .mode p.credits .love {
+    display: inline-block;
+    position: relative;
+    top: 0.2em;
+    font-size: 1.4em;
+    color: rgb(255, 121, 198);
+    transform: scale(.9);
+    animation: love .5s linear infinite alternate-reverse;
+}
+
+@keyframes love {
+    to {
+        transform: scale(1.1);
+    }
+}
+
+.page .mode a:not([href]):not([data]) {
+    width: 310px;
+    height: 60px;
+    z-index: 999999999999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #000;
+    background: transparent;
+    background-color: var(--main);
+    padding: 5px;
+    margin: 0px 50px 10px 50px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.page .mode a:not([href]):not(#openModal):hover {
+    background-color: var(--main2);
+}
+
+
+.page .mode a:not([href]):not(#openModal) .icon {
+    margin-right: 5px;
+    /* border-right: 1px solid #000; */
+    padding: 2px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* ONLINE ROOM */
+.input-box {
+    position: relative;
+    height: 76px;
+    max-width: 900px;
+    width: 100%;
+    background: var(--bg2);
+    margin: 0 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.input-box .button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.input-box input {
+    color: #fff;
+    height: 100%;
+    width: 100%;
+    outline: none;
+    font-size: 18px;
+    font-weight: 400;
+    border: none;
+    padding: 0 155px 0 65px;
+    background-color: transparent;
+}
+
+.input-box .button {
+    right: 20px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #000;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 6px;
+    background-color: var(--main);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.input-box .button:hover {
+    background-color: var(--main2);
+}
+
+.input-box .button:active {
+    transform: translateY(-50%) scale(0.98);
+}
+
+@media screen and (max-width: 500px) {
+    .input-box {
+        height: 66px;
+        margin: 0 8px;
+    }
+
+    .input-box i {
+        left: 12px;
+        font-size: 25px;
+    }
+
+    .input-box input {
+        padding: 0 112px 0 50px;
+    }
+
+    .input-box .button {
+        right: 12px;
+        font-size: 14px;
+        padding: 8px 18px;
+    }
+}
+
+/* TOOLTIP */
+
+.tooltiptext {
+    opacity: 0;
+    width: 120px;
+    font-size: small;
+    background-color: var(--bg);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--bg) transparent transparent transparent;
+}
+
+
+/* ROOM */
+
+.roominfo {
+    border-radius: 15px;
+    background-color: var(--bg2);
+    padding: 35px;
+    margin: 5px;
+}
+
+.roominfo .date {
+    position: relative;
+    background-color: rgba(79, 84, 92, 0.48);
+    border-radius: 3px;
+    padding: 0 2px;
+}
+
+.roominfo .date:hover .tooltiptext {
+    opacity: 1;
+}
