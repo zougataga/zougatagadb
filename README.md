@@ -4,5 +4,6 @@
   <h3>JS-PONG</h3>
   <p>
     <a href="https://zougataga.github.io/js-pong/">Site</a> · <a href="https://discord.gg/ctp">Discord</a>
-  </p>
+  </p><br>
+  <span>Le mode online arrive bientôt !</span>
 </div>
