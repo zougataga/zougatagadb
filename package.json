@@ -1,0 +1,28 @@
+{
+  "name": "zougatagadb",
+  "version": "2.0.3",
+  "description": "Une db simple et complete",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zougataga/zougatagadb.git"
+  },
+  "keywords": [
+    "database",
+    "db",
+    "easy"
+  ],
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "fs": "^0.0.1-security"
+  },
+  "author": "zougataga",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zougataga/zougatagadb/issues"
+  },
+  "homepage": "https://github.com/zougataga/zougatagadb#readme"
+}

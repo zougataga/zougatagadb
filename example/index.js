@@ -1,14 +1,4 @@
-## ZougatagaDb
 
-## Installation
-
-```python
-npm i zougatagadb
-```
-
-## Example
-
-```js
 const zougatagaDb = require("zougatagabb");
 const db = new zougatagaDb();
 // if you want to specify a path you can do so like this
@@ -21,6 +11,3 @@ db.set("level", { level: 1 });
 // Getting an object from the database:
 db.get("level");
 // -> { level: 1 }
-
-```
-
