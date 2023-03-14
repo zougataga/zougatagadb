@@ -26,7 +26,6 @@ class zougatagaDb {
         if (!id) throw new TypeError("No id specified");
         if (typeof id != "string") throw new TypeError(`ID: "${id}" IS NOT a string`);
         if (dataToSet === undefined) throw new TypeError(`Data @ ID: "${id}" IS NOT specified`);
-        this.#getData(id);
         return this.#setData(id, dataToSet)
     }
 
