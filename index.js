@@ -4,8 +4,8 @@ const
 class zougatagaDb {
     constructor(obj) {
         this.path = obj?.path ?? "./db.zougatagadb";
-        this.key = obj?.options?.key ?? this.#stringToBite("zougatagaongit", 32);
-        this.iv = obj?.options?.iv ?? this.#stringToBite("zougatagaongit", 16);
+        this.key = obj?.options?.key ?? this.stringToBite("zougatagaongit", 32);
+        this.iv = obj?.options?.iv ?? this.stringToBite("zougatagaongit", 16);
         if (!fs.existsSync(this.path)) this.#setAllData({});
     }
 
@@ -57,6 +57,7 @@ class zougatagaDb {
         if (!id) throw new TypeError("No id specified");
         if (typeof id != "string") throw new TypeError(`ID: "${id}" IS NOT a string`);
         if (dataToFind === undefined) throw new TypeError(`Data @ ID: "${id}" IS NOT specified`);
+        if (type != "array" && type != "find") throw new TypeError(`Type @ ID: "${id}" IS invalid`);
         const data = this.#getData(id);
         if (!Array.isArray(data)) throw new TypeError(`ID: "${id}" IS NOT a array`);
         if (type === "find") return data.find(dataToFind);
@@ -85,6 +86,9 @@ class zougatagaDb {
         return this.#setData(id, Number(data - rnumber));
     }
 
+    stringToBite(str, size = 32) {
+        return (crypto.createHash('sha256').update(str).digest()).slice(0, size);
+    }
 
     #setAllData(obj) {
         try {
@@ -136,11 +140,5 @@ class zougatagaDb {
         decrypted += decipher.final('utf-8');
         return decrypted;
     }
-
-    #stringToBite(str, size) {
-        const hash = crypto.createHash('sha256').update(str).digest();
-        return hash.slice(0, size);
-    }
-
 };
 module.exports = zougatagaDb
