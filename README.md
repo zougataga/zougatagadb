@@ -1,9 +1,25 @@
+## ZougatagaDb
 
-<div align="center">
-    <img src="./resource/img/favicon.png" alt="Logo" width="80" height="80">
-  <h3>JS-PONG</h3>
-  <p>
-    <a href="https://zougataga.github.io/js-pong/">Demo</a>
-  </p><br>
-  <span>Le mode online arrive bientôt !</span>
-</div>
+## Installation
+
+```python
+npm i zougatagadb
+```
+
+## Example
+
+```js
+const zougatagaDb = require("zougatagabb");
+const db = new zougatagaDb();
+// if you want to specify a path you can do so like this
+// const db = new QuickDB({ path: "source/to/path/test.zougatagabb" });
+
+// Setting an object in the database:
+db.set("level", { level: 1 });
+// -> { level: 1 }
+
+// Getting an object from the database:
+db.get("level");
+// -> { level: 1 }
+
+```
