@@ -1,6 +1,6 @@
 ## ZougatagaDb
 
-[!zougatagadb on npm](https://img.shields.io/npm/v/zougatagadb.svg)](https://www.npmjs.com/package/zougatagadb)
+[![zougatagadb on npm](https://img.shields.io/npm/v/zougatagadb.svg)](https://www.npmjs.com/package/zougatagadb)
 
 ## Installation
 
