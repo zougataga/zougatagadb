@@ -23,7 +23,7 @@ db.set("level", { level: 1 });
 db.get("level");
 // -> { level: 1 }
 
-console.lgo(db.getAll())
+db.getAll()
+// -> [ { id: 'level', data: { level: 1 } } ]
 
 ```
-
