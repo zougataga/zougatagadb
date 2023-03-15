@@ -56,10 +56,10 @@ class zougatagaDb {
         if (!id) throw new TypeError("No id specified");
         if (typeof id != "string") throw new TypeError(`ID: "${id}" IS NOT a string`);
         if (dataToFind === undefined) throw new TypeError(`Data @ ID: "${id}" IS NOT specified`);
-        if (type != "array" && type != "find") throw new TypeError(`Type @ ID: "${id}" IS invalid`);
+        if (type != "array" && type != "object") type == "array";
         const data = this.#getData(id);
         if (!Array.isArray(data)) throw new TypeError(`ID: "${id}" IS NOT a array`);
-        if (type === "find") return data.find(dataToFind);
+        if (type === "object") return data.find(dataToFind);
         else if (type === "array") return data.filter(dataToFind);
     }
 
