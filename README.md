@@ -10,20 +10,23 @@ npm i zougatagadb
 
 ```js
 
-const zougatagaDb = require("zougatagadb");
+const zougatagaDb = require("../");
 const db = new zougatagaDb();
 // if you want to specify a path you can do so like this
 // const db = new zougatagaDb({ path: "source/to/path/test.zougatagadb" });
 
-// Setting an object in the database:
-db.set("level", { level: 1 });
-// -> { level: 1 }
+db.set("level", [{ level: 1 }]);
+// -> [{ level: 1 }]
 
-// Getting an object from the database:
 db.get("level");
-// -> { level: 1 }
+// -> [{ level: 1 }]
+
+db.pull("level", (e) => e.level === 1, "object");
+// => {level: 1}
 
 db.getAll()
-// -> [ { id: 'level', data: { level: 1 } } ]
+// -> [ { id: 'level', data: [{ level: 1 }] } ]
 
+db.delete("level");
+// => undefined
 ```
