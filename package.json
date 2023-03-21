@@ -1,7 +1,7 @@
 {
   "name": "zougatagadb",
-  "version": "2.0.3",
-  "description": "Une db simple et complete",
+  "version": "1.2.3",
+  "description": "A simple database system (crypt) without sqlite or sql",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,10 +13,12 @@
   "keywords": [
     "database",
     "db",
-    "easy"
+    "easy",
+    "nosql",
+    "nosqlite"
   ],
   "dependencies": {
-    "crypto": "^1.0.1",
+    "cipherdata": "^1.0.1",
     "fs": "^0.0.1-security"
   },
   "author": "zougataga",

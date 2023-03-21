@@ -1,11 +1,10 @@
 const
-    crypto = require('crypto'),
+    cipherData = require("cipherdata"),
+    cipher = new cipherData(),
     fs = require("fs");
 class zougatagaDb {
     constructor(obj) {
-        this.path = obj?.path ?? "./db.zougatagadb";
-        this.key = obj?.options?.key ?? this.stringToBite("zougatagaongit", 32);
-        this.iv = obj?.options?.iv ?? this.stringToBite("zougatagaongit", 16);
+        this.path = obj?.path ?? "./zougataga.db";
         if (!fs.existsSync(this.path)) this.#setAllData({});
     }
 
@@ -52,15 +51,26 @@ class zougatagaDb {
         return this.#getData(id);
     }
 
-    pull(id, dataToFind, type) {
+    pull(id, dataToFind) {
         if (!id) throw new TypeError("No id specified");
         if (typeof id != "string") throw new TypeError(`ID: "${id}" IS NOT a string`);
         if (dataToFind === undefined) throw new TypeError(`Data @ ID: "${id}" IS NOT specified`);
-        if (type != "array" && type != "object") type == "array";
-        const data = this.#getData(id);
+        const data = this.#getData(id) || [];
         if (!Array.isArray(data)) throw new TypeError(`ID: "${id}" IS NOT a array`);
-        if (type === "object") return data.find(dataToFind);
-        else if (type === "array") return data.filter(dataToFind);
+        return data.filter(dataToFind);
+    }
+
+    pullDelete(id, condition) {
+        if (!id) throw new TypeError("No id specified");
+        if (typeof id != "string") throw new TypeError(`ID: "${id}" IS NOT a string`);
+        if (condition === undefined) throw new TypeError(`Condition @ ID: "${id}" IS NOT specified`);
+        const
+            newd = [],
+            data = this.#getData(id) || [];
+        if (!Array.isArray(data)) throw new TypeError(`ID: "${id}" IS NOT a array`);
+        for (const d of data) { if (!condition(d)) newd.push(d) };
+        this.#setData(id, newd);
+        return this.#getData(id);
     }
 
     add(id, number) {
@@ -85,59 +95,55 @@ class zougatagaDb {
         return this.#setData(id, Number(data - rnumber));
     }
 
-    stringToBite(str, size = 32) {
-        return (crypto.createHash('sha256').update(str).digest()).slice(0, size);
-    }
-
     #setAllData(obj) {
         try {
-            fs.writeFileSync(this.path, this.#encryptData(JSON.stringify(obj)));
+            fs.writeFileSync(this.path, cipher.encryptData(JSON.stringify(obj)), "hex");
         } catch (error) {
             throw error;
         }
     }
 
     #setData(id, dataToSet) {
-        const data = (this.#getAllData());
-        data[id] = dataToSet;
-        this.#setAllData(data);
-        return this.#getData(id);
+        try {
+            const data = (this.#getAllData());
+            data[id] = dataToSet;
+            this.#setAllData(data);
+            return this.#getData(id);
+        } catch (error) {
+            return;
+        }
     }
 
     #deleteData(id) {
-        const data = (this.#getAllData());
-        delete data[id];
-        this.#setAllData(data);
-        return this.#getData(id);
+        try {
+            const data = (this.#getAllData());
+            delete data[id];
+            this.#setAllData(data);
+            return this.#getData(id);
+        } catch (error) {
+            return;
+        }
     }
 
     #getData(id, defaultData) {
-        const fetched = (this.#getAllData())[id];
-        if (!fetched && defaultData) this.#setData(id, defaultData);
-        return fetched;
+        try {
+            const fetched = (this.#getAllData())[id];
+            if (!fetched && defaultData) this.#setData(id, defaultData);
+            return fetched;
+        } catch (error) {
+            return
+        }
     }
 
     #getAllData() {
         try {
-            return JSON.parse(this.#decryptData(fs.readFileSync(this.path)));
+            if (!fs.existsSync(this.path)) this.#setAllData({});
+            return JSON.parse(cipher.decryptData(fs.readFileSync(this.path, "hex")));
         } catch (error) {
-            console.log(error);
-            return false;
+            this.#setAllData({});
+            return {}
         }
     }
 
-    #encryptData(data) {
-        const cipher = crypto.createCipheriv('aes-256-cbc', this.key, this.iv);
-        let encrypted = cipher.update(data, 'utf-8', 'hex');
-        encrypted += cipher.final('hex');
-        return Buffer.from(encrypted, 'hex');
-    }
-
-    #decryptData(data) {
-        const decipher = crypto.createDecipheriv('aes-256-cbc', this.key, this.iv);
-        let decrypted = decipher.update(data, 'hex', 'utf-8');
-        decrypted += decipher.final('utf-8');
-        return decrypted;
-    }
 };
 module.exports = zougatagaDb
