@@ -1,7 +1,7 @@
 {
   "name": "zougatagadb",
-  "version": "1.2.3",
-  "description": "A simple database system (crypt) without sqlite or sql",
+  "version": "1.2.4",
+  "description": "A simple database system local without sqlite or sql",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
