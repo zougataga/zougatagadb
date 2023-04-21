@@ -1,5 +1,5 @@
 const zougatagaDb = require("zougatagadb");
-const db = new zougatagaDb();
+const db = new zougatagaDb({ cryptData: false });
 // if you want to specify a path you can do so like this
 // const db = new zougatagaDb({ path: "source/to/path/test.db" });
 
