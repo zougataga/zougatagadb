@@ -3,8 +3,9 @@ const
     cipher = new cipherData(),
     fs = require("fs");
 class zougatagaDb {
-    constructor(obj) {
-        this.path = obj?.path ?? "./zougataga.db";
+    constructor({ path = "./zougataga.db", cryptData = true } = {}) {
+        this.path = path;
+        this.cryptData = cryptData;
         if (!fs.existsSync(this.path)) this.#setAllData({});
     }
 
@@ -95,14 +96,6 @@ class zougatagaDb {
         return this.#setData(id, Number(data - rnumber));
     }
 
-    #setAllData(obj) {
-        try {
-            fs.writeFileSync(this.path, cipher.encryptData(JSON.stringify(obj)), "hex");
-        } catch (error) {
-            throw error;
-        }
-    }
-
     #setData(id, dataToSet) {
         try {
             const data = (this.#getAllData());
@@ -135,10 +128,23 @@ class zougatagaDb {
         }
     }
 
+    #setAllData(obj) {
+        try {
+            let d = JSON.stringify(obj);
+            if (this.cryptData) d = cipher.encryptData(d);
+            fs.writeFileSync(this.path, d, (this.cryptData ? "hex" : "utf-8"));
+        } catch (error) {
+            throw error;
+        }
+    }
+
     #getAllData() {
         try {
             if (!fs.existsSync(this.path)) this.#setAllData({});
-            return JSON.parse(cipher.decryptData(fs.readFileSync(this.path, "hex")));
+            let d = fs.readFileSync(this.path, (this.cryptData ? "hex" : "utf-8"));
+            if (this.cryptData) d = cipher.decryptData(d);
+            if (d) d = JSON.parse(d);
+            return d;
         } catch (error) {
             this.#setAllData({});
             return {}
